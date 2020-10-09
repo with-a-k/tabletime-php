@@ -1,1 +1,1 @@
-CS 313 PHP Base Code
+TableTime is a scheduling app.
