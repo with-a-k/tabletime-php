@@ -1,5 +1,5 @@
 -- This "CASCADE" keyword will also drop tables that depend on user.
-DROP TABLE IF EXISTS public.user CASCADE
+DROP TABLE IF EXISTS public.user CASCADE;
 
 CREATE TABLE public.user
 (
