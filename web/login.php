@@ -1,3 +1,7 @@
+<?php
+require "connectDb.php";
+$db = connect_db();
+?>
 <html>
   <head>
     <title>TableTime</title>

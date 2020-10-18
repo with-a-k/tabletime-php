@@ -1,3 +1,7 @@
+<?php
+require "connectDb.php";
+$db = connect_db();
+?>
 <html>
   <div class="top-bar">
     <div class="top-bar-left">

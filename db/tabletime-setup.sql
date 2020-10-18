@@ -1,7 +1,7 @@
 -- This "CASCADE" keyword will also drop tables that depend on user.
-DROP TABLE IF EXISTS public.user CASCADE;
+DROP TABLE IF EXISTS public.tabletime_user CASCADE;
 
-CREATE TABLE public.user
+CREATE TABLE public.tabletime_user
 (
   id  SERIAL NOT NULL PRIMARY KEY,
   username VARCHAR(100) NOT NULL UNIQUE,
@@ -25,7 +25,7 @@ CREATE TABLE public.onetimeevent
     -- "Minimum Users" is the number of attendees required to hold the event.
     minimum_users INT NOT NULL,
     -- This specifically references the user creating the event.
-    user_id INT NOT NULL REFERENCES public.user(id)
+    user_id INT NOT NULL REFERENCES public.tabletime_user(id)
 );
 
 -- Recurring Events use abstract dates such as "Saturdays",
@@ -41,13 +41,13 @@ CREATE TABLE public.recurevent
     description VARCHAR(500) NOT NULL,
     required_users VARCHAR(100) NOT NULL,
     minimum_users INT NOT NULL,
-    user_id INT NOT NULL REFERENCES public.user(id)
+    user_id INT NOT NULL REFERENCES public.tabletime_user(id)
 );
 
 CREATE TABLE public.useronetime
 (
   id SERIAL NOT NULL PRIMARY KEY,
-  user_id INT NOT NULL REFERENCES public.user(id),
+  user_id INT NOT NULL REFERENCES public.tabletime_user(id),
   onetimeevent_id INT NOT NULL REFERENCES public.onetimeevent(id),
   start_time TIMESTAMP WITH TIME ZONE NOT NULL,
   duration INTERVAL NOT NULL DEFAULT '1 hour'
@@ -56,7 +56,7 @@ CREATE TABLE public.useronetime
 CREATE TABLE public.userrecur
 (
   id SERIAL NOT NULL PRIMARY KEY,
-  user_id INT NOT NULL REFERENCES public.user(id),
+  user_id INT NOT NULL REFERENCES public.tabletime_user(id),
   recurevent_id INT NOT NULL REFERENCES public.recurevent(id),
   -- Since recurring events deal with abstract dates,
   -- the date and time data types may not be appropriate.
