@@ -12,7 +12,7 @@ $db = connect_db();
       <ul class="menu">
         <?php if(isset($_SESSION['username'])): ?>
           <li><a href="userprofile.php">Your Profile</a></li>
-        <?php else ?>
+        <?php else; ?>
           <li><a href="login.php">Log In</a></li>
           <li><a href="signup.php">Sign Up</a></li>
         <?php endif; ?>
