@@ -4,11 +4,9 @@ DROP TABLE IF EXISTS public.tabletime_user CASCADE;
 CREATE TABLE public.tabletime_user
 (
   id  SERIAL NOT NULL PRIMARY KEY,
-  username VARCHAR(100) NOT NULL UNIQUE,
-  -- I use "salt" and "hash" instead of "password" here for security reasons.
-  salt VARCHAR(100) NOT NULL,
-  hash VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  hash VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
   timezone VARCHAR(100) NOT NULL
 );
 
