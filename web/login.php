@@ -11,7 +11,7 @@
           <form name="login" action="index.php" method="POST">
             Username: <input type="text" name="user-name">
             Password: <input type="password" name="password">
-            <button type="button" class="button">Log In</button>
+            <input type="button" class="button">Log In</button>
           </form>
         </div>
       </div>

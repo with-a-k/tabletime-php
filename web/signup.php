@@ -12,7 +12,7 @@
             Username: <input type="text" name="username">
             Email: <input type="text" name="email">
             Password: <input type="password" name="password">
-            <button type="button" class="button">Log In</button>
+            <input type="submit" class="button">Register</button>
           </form>
         </div>
       </div>
