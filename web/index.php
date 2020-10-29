@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+inlude 'queries.php';
+?>
 <html>
   <head>
     <title>TableTime</title>
