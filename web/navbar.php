@@ -1,7 +1,4 @@
-<?php session_start();
-require "connectDb.php";
-$db = connect_db();
-?>
+<?php session_start(); ?>
 <html>
   <div class="top-bar">
     <div class="top-bar-left">
