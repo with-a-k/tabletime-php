@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require "connectDb.php";
-$db = connectDb();
+include "connectDb.php";
+$db = connect_db();
 
 function getOneTimeEvents() {
   //Gets one-time events;
