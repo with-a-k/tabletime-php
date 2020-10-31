@@ -10,6 +10,7 @@
       <ul class="menu">
         <?php if(isset($_SESSION["username"])): ?>
           <li><a href="userprofile.php">Your Profile</a></li>
+          <li><a href="logout.php">Log Out</a></li>
         <?php else: ?>
           <li><a href="login.php">Log In</a></li>
           <li><a href="signup.php">Sign Up</a></li>
