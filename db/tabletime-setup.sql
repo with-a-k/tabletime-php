@@ -7,7 +7,7 @@ CREATE TABLE public.tabletime_user
   username VARCHAR(255) NOT NULL UNIQUE,
   hash VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  timezone VARCHAR(100) NOT NULL
+  timezone VARCHAR(100) NOT NULL DEFAULT "To Be Added"
 );
 
 -- One-time Events use concrete dates such as October 15th, 2020.

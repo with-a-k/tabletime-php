@@ -46,8 +46,8 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
             Password: <input type="password" name="password">
             <input type="submit" class="button" value="Register">
           </form>
-          <? if ($badLogin) {
-            echo "Couldn't process your registration. Please try again."
+          <?php if ($badLogin) {
+            echo "Couldn't process your registration. Please try again.";
           } ?>
           <div class="error">
         </div>
