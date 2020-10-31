@@ -1,5 +1,41 @@
-<?php session_start(); ?>
-<html>
+<?php
+session_start();
+require "connectDb.php";
+
+if(isset($_POST['username']) && isset($_POST['password'])) {
+  $db = connect_db();
+  $username = htmlspecialchars($_POST['username']);
+  $password = htmlspecialchars($_POST['password']);
+  $values = [':username' => $username];
+
+  $query = 'SELECT id, username, hash FROM users WHERE username=:username';
+  try {
+    $res = $db->prepare($query);
+    $res->execute($values);
+    $rsp = $res->fetch(PDO::FETCH_ASSOC);
+    if (isset($rsp['username'])) {
+      if (password_verify($password, $rsp['hash'])) {
+        $_SESSION["user_id"] = $rsp['id'];
+        $_SESSION["username"] = $username;
+        $newURL = 'index.php';
+        header('Location: ' . $newURL);
+        die();
+      }
+    }
+    $badLogin = true;
+    $newURL = "login.php";
+    header('Location: ' . $newURL);
+    die();
+  } catch (PDOException $e) {
+    echo $e;
+    die();
+  }
+  $badLogin = true;
+  $newURL = 'login.php';
+  header('Location: ' . $newURL);
+  die();
+}
+?><html>
   <head>
     <title>TableTime</title>
     <link rel=stylesheet href="styles/foundation.css">
@@ -15,6 +51,9 @@
             Password: <input type="password" name="password">
             <input type="submit" class="button" value="Log In">
           </form>
+          <?php if ($badLogin) {
+            echo "Username or password were incorrect";
+          } ?>
         </div>
       </div>
     </div>
