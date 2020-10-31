@@ -7,8 +7,8 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
   $username = htmlspecialchars($_POST['username']);
   $email = htmlspecialchars($_POST['email']);
   $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
-  
-  $query = 'INSERT INTO users (username, email, hash) VALUES (:username, :email, :password)';
+
+  $query = 'INSERT INTO users (username, email, hash, timezone) VALUES (:username, :email, :password, "America/Denver")';
   try {
     $res = $db->prepare($query);
     $res->bindValue(':username', $username);
@@ -18,7 +18,6 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $newURL = 'index.php';
     $_SESSION['user'] = $db->lastInsertId();
     $_SESSION['username'] = $username;
-    $newURL = 'index.php';
     header('Location: ' . $newURL);
     die();
   } catch (PDOException $e) {
