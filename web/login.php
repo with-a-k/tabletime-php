@@ -7,7 +7,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
 
-  $query = 'SELECT id, username, hash FROM users WHERE username=:username';
+  $query = 'SELECT id, username, hash FROM tabletime_user WHERE username=:username';
   try {
     $res = $db->prepare($query);
     $res->bindValue(':username', $username);

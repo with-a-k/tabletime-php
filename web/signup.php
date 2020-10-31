@@ -8,7 +8,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
   $email = htmlspecialchars($_POST['email']);
   $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
 
-  $query = 'INSERT INTO users (username, email, hash, timezone) VALUES (:username, :email, :password, :timezone)';
+  $query = 'INSERT INTO tabletime_user (username, email, hash, timezone) VALUES (:username, :email, :password, :timezone)';
   try {
     $res = $db->prepare($query);
     $res->bindValue(':username', $username);
