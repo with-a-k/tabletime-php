@@ -54,21 +54,5 @@ function showAllEvents() {
 
 }
 
-function registerUser() {
-  $username = htmlspecialchars($_POST['username']);
-  $email = htmlspecialchars($_POST['email']);
-  $password = password_hash(htmlspecialchars($_POST['password']));
-  $hash = password_hash($password, PASSWORD_DEFAULT);
-  $values = [':username' => $username, ':email' => $email, ':password' => $password]
-
-  $query = 'INSERT INTO tabletime_user (username, email, password) VALUES (:username, :email, :password)'
-  try {
-    $res = $db->prepare($query);
-    $res->execute($values);
-  } catch (PDOException $e) {
-    echo $e;
-    exit();
-  }
-}
 
  ?>
