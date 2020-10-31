@@ -1,6 +1,6 @@
 <?php
 session_start();
-inlude 'queries.php';
+require "queries.php";
 ?>
 <html>
   <head>
