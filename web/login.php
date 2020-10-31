@@ -6,12 +6,12 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
   $db = connect_db();
   $username = htmlspecialchars($_POST['username']);
   $password = htmlspecialchars($_POST['password']);
-  $values = [':username' => $username];
 
   $query = 'SELECT id, username, hash FROM users WHERE username=:username';
   try {
     $res = $db->prepare($query);
-    $res->execute($values);
+    $res->bindValue(':username', $username);
+    $res->execute();
     $rsp = $res->fetch(PDO::FETCH_ASSOC);
     if (isset($rsp['username'])) {
       if (password_verify($password, $rsp['hash'])) {

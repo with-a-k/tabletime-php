@@ -8,7 +8,7 @@
     </div>
     <div class="top-bar-right">
       <ul class="menu">
-        <?php if(isset($_SESSION['username'])): ?>
+        <?php if(isset($_SESSION["username"])): ?>
           <li><a href="userprofile.php">Your Profile</a></li>
         <?php else: ?>
           <li><a href="login.php">Log In</a></li>

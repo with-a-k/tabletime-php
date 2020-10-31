@@ -7,12 +7,14 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
   $username = htmlspecialchars($_POST['username']);
   $email = htmlspecialchars($_POST['email']);
   $password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
-  $values = [':username' => $username, ':password' => $password, ':email' => $email];
-
+  
   $query = 'INSERT INTO users (username, email, hash) VALUES (:username, :email, :password)';
   try {
     $res = $db->prepare($query);
-    $res->execute($values);
+    $res->bindValue(':username', $username);
+    $res->bindValue(':email', $email);
+    $res->bindValue(':password', $password);
+    $res->execute();
     $newURL = 'index.php';
     $_SESSION['user'] = $db->lastInsertId();
     $_SESSION['username'] = $username;
