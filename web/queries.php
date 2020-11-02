@@ -2,10 +2,10 @@
 session_start();
 
 include "connectDb.php";
-$db = connect_db();
 
 function getOneTimeEvents() {
   //Gets one-time events;
+  $db = connect_db();
   $statement = $db->prepare(
     "SELECT e.id, e.name, description, u.username
     FROM onetimeevent AS e
@@ -29,6 +29,7 @@ function getOneTimeEvents() {
 
 function getRecurringEvents() {
   //Gets recurring events;
+  $db = connect_db();
   $statement = $db->prepare(
     "SELECT e.id, e.name, description, u.username
     FROM recurevent AS e
