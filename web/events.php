@@ -15,10 +15,26 @@ $recs = getRecurringEvents();
     <div class="grid-container">
       <ul>
       <?php foreach ($otes as $event): ?>
-        <li><a href="events/<?=$event['id']?>.php">Link to event page</a></li>
+        <li>
+          <div>
+            <a href="events?oid<?=$event['id']?>.php"><?=$event['name']?></a>
+            Created by <?=$event['creator']?>
+            <?=$event['desc']?>
+            One-time
+          </div>
+        </li>
+      <?php endforeach; ?>
+      <?php foreach ($recs as $event): ?>
+        <li>
+          <div>
+            <a href="events?rid<?=$event['id']?>.php"><?=$event['name']?></a>
+            Created by <?=$event['creator']?>
+            <?=$event['desc']?>
+            Recurring
+          </div>
+        </li>
       <?php endforeach; ?>
       </ul>
-      <?php print_r($recs); ?>
     </div>
   </body>
 </html>
