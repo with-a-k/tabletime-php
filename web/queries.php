@@ -51,8 +51,28 @@ function getRecurringEvents() {
   return $recurringEvents;
 }
 
-function showAllEvents() {
+function getOneTimeEventById($oid) {
+  $db = connect_db();
+  $statement = $db->prepare(
+    "SELECT e.id, e.name, description, u.username
+    FROM onetimeevent AS e
+    INNER JOIN tabletime_user as u
+    ON e.user_id = u.id
+    WHERE e.id = $oid");
+  $statement->execute();
 
+  $oneTimeEvents = [];
+
+  while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+    $oteId = $row['id'];
+    $oteName = $row['name'];
+    $oteDesc = $row['desc'];
+    $oteHost = $row['username'];
+
+    $oneTimeEvent[] = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost];
+  }
+
+  return $oneTimeEvent;
 }
 
 

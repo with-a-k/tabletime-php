@@ -1,0 +1,21 @@
+/*
+--antique-brass: #cb997e;
+--desert-sand: #ddbea9;
+--champagne-pink: #ffe8d6;
+--ash-gray: #b7b7a4;
+--artichoke: #a5a58d;
+--ebony: #6b705c;
+*/
+
+body {
+  background-color: #ffe8d6;
+}
+
+h1 {
+  color: #ffe8d6;
+  text-align: center;
+}
+
+.event-item {
+  border: solid #cb997e;
+}
