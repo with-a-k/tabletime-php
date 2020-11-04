@@ -69,7 +69,7 @@ function getOneTimeEventById($oid) {
     $oteDesc = $row['description'];
     $oteHost = $row['username'];
 
-    $oneTimeEvent[] = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost];
+    $oneTimeEvent = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost];
   }
 
   return $oneTimeEvent;
