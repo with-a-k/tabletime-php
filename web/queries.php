@@ -58,10 +58,10 @@ function getOneTimeEventById($oid) {
     FROM onetimeevent AS e
     INNER JOIN tabletime_user as u
     ON e.user_id = u.id
-    WHERE e.id = $oid");
+    WHERE e.id = ". $oid);
   $statement->execute();
 
-  $oneTimeEvents = [];
+  $oneTimeEvent = [];
 
   while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $oteId = $row['id'];
@@ -75,5 +75,29 @@ function getOneTimeEventById($oid) {
   return $oneTimeEvent;
 }
 
+function getOneTimeEventBookingsByEvent($oid) {
+  $db = connect_db();
+  $statement = $db->prepare(
+    "SELECT b.id, start_time, duration, u.username
+    FROM useronetime AS b
+    INNER JOIN tabletime_user as u
+    ON b.user_id = u.id
+    WHERE b.onetimeevent_id = ". $oid ."
+    ORDER BY b.user_id");
+  $statement->execute();
+
+  $userAvails = [];
+
+  while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+    $availId = $row['id'];
+    $availUsername = $row['username'];
+    $availTimeStamp = $row['start_time'];
+    $availDuration = $row['duration'];
+
+    $userAvails = [];
+  }
+
+  return $userAvails;
+}
 
  ?>
