@@ -35,6 +35,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
   <head>
     <title>TableTime</title>
     <link rel=stylesheet href="styles/foundation.css">
+    <link rel=stylesheet href="styles/tabletime.css">
   </head>
   <body>
     <?php include 'navbar.php'; ?>

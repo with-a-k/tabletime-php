@@ -66,7 +66,7 @@ function getOneTimeEventById($oid) {
   while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $oteId = $row['id'];
     $oteName = $row['name'];
-    $oteDesc = $row['desc'];
+    $oteDesc = $row['description'];
     $oteHost = $row['username'];
 
     $oneTimeEvent[] = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost];
@@ -94,7 +94,7 @@ function getOneTimeEventBookingsByEvent($oid) {
     $availTimeStamp = $row['start_time'];
     $availDuration = $row['duration'];
 
-    $userAvails = [];
+    $userAvails[] = ['id' => $availId, 'booker' => $availUsername, 'start_time' => $availTimeStamp, 'duration' => $availDuration];
   }
 
   return $userAvails;
