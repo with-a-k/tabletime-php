@@ -17,7 +17,7 @@ $recs = getRecurringEvents();
       <?php foreach ($otes as $event): ?>
         <li>
           <div class="event-item">
-            <a href="events?oid=<?=$event['id']?>.php"><?=$event['name']?></a><br>
+            <a href="event.php?oid=<?=$event['id']?>.php"><?=$event['name']?></a><br>
             Created by <?=$event['creator']?><br>
             <?=$event['desc']?>
             <b>One-time</b>
@@ -27,7 +27,7 @@ $recs = getRecurringEvents();
       <?php foreach ($recs as $event): ?>
         <li>
           <div class="event-item">
-            <a href="events?rid=<?=$event['id']?>.php"><?=$event['name']?></a><br>
+            <a href="event.php?rid=<?=$event['id']?>.php"><?=$event['name']?></a><br>
             Created by <?=$event['creator']?><br>
             <?=$event['desc']?>
             <b>Recurring</b>
