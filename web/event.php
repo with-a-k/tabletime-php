@@ -21,6 +21,7 @@ if (isset($_GET['oid'])) {
     <?php include 'navbar.php'; ?>
     <h1>TableTime</h1>
     <div class="event-detail">
+      <?php print_r($event) ?>
       <h3><?= $event['name']?></h3>
       <h4><?= $event['creator']?></h4>
       <p><?= $event['desc']?></p>
