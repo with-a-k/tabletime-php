@@ -156,4 +156,20 @@ function getRecurringEventBookingsByEvent($oid) {
   return $userAvails;
 }
 
+function addBookingToOneTimeEvent() {
+
+}
+
+function addBookingToRecurringEvent() {
+
+}
+
+function createOneTimeEvent() {
+
+}
+
+function createRecurringEvent() {
+  
+}
+
  ?>

@@ -43,11 +43,37 @@ if (isset($_GET['oid'])) {
             <?php if(isset($_GET['oid'])): ?>
               <p>Available at <?=$avail['start_time']?> for <?=$avail['duration']?></p>
             <?php elseif(isset($_GET['rid'])): ?>
-              <p>Available on <?=$avail['day_of_week']?>s at <?=$avail['hour_of_day']?> for <?=$avail['duration']?></p>
+              <p>Available on <?=$avail['day_of_week']?> at <?=$avail['hour_of_day']?> for <?=$avail['duration']?></p>
             <?php endif; ?>
           </li>
         <?php endforeach; ?>
       </ul>
     </div>
+    <?php if(isset($_SESSION['username']) && isset($_SESSION['user_id'])): ?>
+      <div class="add-avail-form">
+        <form name="add-availability" action="" method="">
+          <?php if(ifsset($_GET['oid'])): ?>
+            <label for="date">Date:</label> <input type="date" name="date">
+            <label for="time">Time:</label> <input type="time" name="time">
+            <input type="hidden" name="onetime_event_id" value"<?=$_GET['oid']?>">
+          <?php elseif(isset($_GET['rid'])): ?>
+            <label for="day_of_week">Day:</label> <select name="day_of_week" id="day_of_week">
+              <option value="Mondays">Mondays</option>
+              <option value="Tuesdays">Tuesdays</option>
+              <option value="Wednesdays">Wednesdays</option>
+              <option value="Thursdays">Thursdays</option>
+              <option value="Fridays">Fridays</option>
+              <option value="Saturdays">Saturdays</option>
+              <option value="Sundays">Sundays</option>
+            </select>
+            <label for="hour_of_day">Hour:</label> <input type="text" name="hour_of_day">
+            <input type="hidden" name="rec_event_id" value="<?=$_GET['rid']?>">
+          <?php endif ?>
+          <label for="duration">Duration:</label> <input type="text" name="duration">
+          <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
+          <button class="button" id="ajax-submit-booking"></button>
+        </form>
+      </div>
+    <?php endif; ?>
   </body>
 </html>
