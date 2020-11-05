@@ -24,9 +24,9 @@ if (isset($_GET['oid'])) {
     <h1>TableTime</h1>
     <div class="event-detail">
       <h3><?= $event['name']?></h3>
-      <?php if(isset($GET['oid'])): ?>
+      <?php if(isset($_GET['oid'])): ?>
         <h4>One-Time Event</h4>
-      <?php elseif(isset($GET['rid'])): ?>
+      <?php elseif(isset($_GET['rid'])): ?>
         <h4>Recurring Event</h4>
       <?php else: ?>
         <h4>Event Not Found</h4>
@@ -40,9 +40,9 @@ if (isset($_GET['oid'])) {
         <?php foreach($avails as $avail): ?>
           <li id="booking-<?=$avail['id']?>">
             <h5><?=$avail['booker']?></h5>
-            <?php if(isset($GET['oid'])): ?>
+            <?php if(isset($_GET['oid'])): ?>
               <p>Available at <?=$avail['start_time']?> for <?=$avail['duration']?></p>
-            <?php elseif(isset($GET['rid'])): ?>
+            <?php elseif(isset($_GET['rid'])): ?>
               <p>Available on <?=$avail['day_of_week']?>s at <?=$avail['hour_of_day']?> for <?=$avail['duration']?></p>
             <?php endif; ?>
           </li>
