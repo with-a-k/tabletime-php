@@ -21,14 +21,20 @@ if (isset($_GET['oid'])) {
     <?php include 'navbar.php'; ?>
     <h1>TableTime</h1>
     <div class="event-detail">
-      <?php print_r($event) ?>
       <h3><?= $event['name']?></h3>
-      <h4><?= $event['creator']?></h4>
+      <h4>Host: <?= $event['creator']?></h4>
       <p><?= $event['desc']?></p>
     </div>
     <div class="bookings-holder">
       <h3>Potential Attendees:</h3>
-      <?php print_r($avails) ?>
+      <ul class="attendees">
+        <?php foreach($avails as $avail): ?>
+          <li id="booking-<?=$avail['id']?>">
+            <h5><?=$avail['booker']?></h5>
+            <p>Available at <?=$avail['start_time']?> for <?=$avail['duration']?></p>
+          </li>
+        <?php endforeach; ?>
+      </ul>
     </div>
   </body>
 </html>

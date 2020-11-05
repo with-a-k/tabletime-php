@@ -83,3 +83,5 @@ CREATE TABLE public.recursuggestion
   hour_of_day VARCHAR(100) NOT NULL,
   duration VARCHAR(100) NOT NULL DEFAULT '1 hour'
 );
+
+SET intervalstyle = 'postgres_verbose';

@@ -3,6 +3,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="menu">
+        <li><a href="index.php">Home</a></li>
         <li><a href="events.php">Browse Events</a></li>
       </ul>
     </div>
