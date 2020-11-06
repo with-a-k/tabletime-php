@@ -18,6 +18,7 @@ if (isset($_GET['oid'])) {
     <title>TableTime</title>
     <link rel=stylesheet href="styles/foundation.css">
     <link rel=stylesheet href="styles/tabletime.css">
+    <script src="scripts/bookAvailability.js"></script>
   </head>
   <body>
     <?php include 'navbar.php'; ?>
@@ -71,7 +72,7 @@ if (isset($_GET['oid'])) {
           <?php endif ?>
           <label for="duration">Duration:</label> <input type="text" name="duration">
           <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
-          <button class="button" id="ajax-submit-booking"></button>
+          <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>)" id="ajax-submit-booking"></button>
         </form>
       </div>
     <?php endif; ?>
