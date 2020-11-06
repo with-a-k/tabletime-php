@@ -40,7 +40,13 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
       $newEventId = $db->lastInsertId();
-      $newURL = 'event.php?rid='.$newEventId;
+      if (isset($newEventId)) {
+        $newURL = 'event.php?rid='.$newEventId;
+        header('Location: ' . $newURL);
+        die();
+      }
+      $badEvent = true;
+      $newURL = 'newEvent.php';
       header('Location: ' . $newURL);
       die();
     } catch (PDOException $e) {
