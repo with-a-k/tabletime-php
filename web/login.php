@@ -15,8 +15,8 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     $rsp = $res->fetch(PDO::FETCH_ASSOC);
     if (isset($rsp['username'])) {
       if (password_verify($password, $rsp['hash'])) {
-        $_SESSION["user_id"] = $rsp['id'];
-        $_SESSION["username"] = $username;
+        $_SESSION['user_id'] = $rsp['id'];
+        $_SESSION['username'] = $username;
         $newURL = 'index.php';
         header('Location: ' . $newURL);
         die();

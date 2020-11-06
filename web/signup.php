@@ -16,9 +16,9 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $res->bindValue(':password', $password);
     $res->bindValue(':timezone', "America/Denver");
     $res->execute();
-    $newURL = 'index.php';
     $_SESSION['user_id'] = $db->lastInsertId();
     $_SESSION['username'] = $username;
+    $newURL = 'index.php';
     header('Location: ' . $newURL);
     die();
   } catch (PDOException $e) {
