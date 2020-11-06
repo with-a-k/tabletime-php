@@ -9,7 +9,7 @@
     </div>
     <div class="top-bar-right">
       <ul class="menu">
-        <?php if(isset($_SESSION['username')): ?>
+        <?php if(isset($_SESSION['username'])): ?>
           <li><a href="userprofile.php">Your Profile</a></li>
           <li><a href="logout.php">Log Out</a></li>
         <?php else: ?>
