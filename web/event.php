@@ -53,7 +53,7 @@ if (isset($_GET['oid'])) {
     <?php if(isset($_SESSION['username']) && isset($_SESSION['user_id'])): ?>
       <div class="add-avail-form">
         <form name="add-availability" action="" method="">
-          <?php if(ifsset($_GET['oid'])): ?>
+          <?php if(isset($_GET['oid'])): ?>
             <label for="date">Date:</label> <input type="date" name="date">
             <label for="time">Time:</label> <input type="time" name="time">
             <input type="hidden" name="onetime_event_id" value"<?=$_GET['oid']?>">
