@@ -16,7 +16,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res = $db->prepare($query);
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
-      $res->bindValue(':required_users', "");
+      $res->bindValue(':req_users', "");
       $res->bindValue(':minimum_users', $minUsers);
       $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
@@ -35,7 +35,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res = $db->prepare($query);
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
-      $res->bindValue(':required_users', "");
+      $res->bindValue(':req_users', "");
       $res->bindValue(':minimum_users', $minUsers);
       $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
