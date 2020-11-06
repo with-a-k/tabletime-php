@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <html>
   <div class="top-bar">
     <div class="top-bar-left">
