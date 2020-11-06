@@ -9,15 +9,16 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
   $minUsers = htmlspecialchars($_POST['min-users']);
   $eventType = htmlspecialchars($_POST['event-type']);
 
-  if ($eventType = "one-time") {
-    $query = 'INSERT INTO onetimeevent (name, description, required_users, minimum_users)
-    VALUES (:name, :description, :req_users, :min_users)';
+  if ($eventType == "one-time") {
+    $query = 'INSERT INTO onetimeevent (name, description, required_users, minimum_users, user_id)
+    VALUES (:name, :description, :req_users, :min_users, :user_id)';
     try {
       $res = $db->prepare($query);
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
       $res->bindValue(':required_users', "");
       $res->bindValue(':minimum_users', $minUsers);
+      $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
       $newEventId = $db->lastInsertId();
       $newURL = 'event.php?oid='.$newEventId;
@@ -27,15 +28,16 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       echo $e;
       die();
     }
-  } else if ($eventType = "recurring") {
-    $query = 'INSERT INTO recurevent (name, description, required_users, minimum_users)
-    VALUES (:name, :description, :req_users, :min_users)';
+  } else if ($eventType == "recurring") {
+    $query = 'INSERT INTO recurevent (name, description, required_users, minimum_users, user_id)
+    VALUES (:name, :description, :req_users, :min_users, :user_id)';
     try {
       $res = $db->prepare($query);
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
       $res->bindValue(':required_users', "");
       $res->bindValue(':minimum_users', $minUsers);
+      $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
       $newEventId = $db->lastInsertId();
       $newURL = 'event.php?rid='.$newEventId;
