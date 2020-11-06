@@ -6,7 +6,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
   $db = connect_db();
   $eventName = htmlspecialchars($_POST['event-name']);
   $desc = htmlspecialchars($_POST['desc']);
-  $minUsers = htmlspecialchars($_POST['min-users']);
+  $minUsers = (int) htmlspecialchars($_POST['min-users']);
   $eventType = htmlspecialchars($_POST['event-type']);
 
   if ($eventType == "one-time") {
