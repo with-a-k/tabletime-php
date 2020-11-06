@@ -49,7 +49,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
       <div class="grid-x">
         <div class="cell">
           <form name="login" action="login.php" method="POST">
-            Username: <input type="text" name="user-name">
+            Username: <input type="text" name="username">
             Password: <input type="password" name="password">
             <input type="submit" class="button" value="Log In">
           </form>
