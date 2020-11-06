@@ -17,7 +17,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $res->bindValue(':timezone', "America/Denver");
     $res->execute();
     $newURL = 'index.php';
-    $_SESSION['user'] = $db->lastInsertId();
+    $_SESSION['user_id'] = $db->lastInsertId();
     $_SESSION['username'] = $username;
     header('Location: ' . $newURL);
     die();

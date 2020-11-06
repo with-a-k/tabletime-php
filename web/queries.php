@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 include "connectDb.php";
 
 function getOneTimeEvents() {
@@ -169,7 +167,7 @@ function createOneTimeEvent() {
 }
 
 function createRecurringEvent() {
-  
+
 }
 
  ?>
