@@ -6,7 +6,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
   $db = connect_db();
   $eventName = htmlspecialchars($_POST['event-name']);
   $desc = htmlspecialchars($_POST['desc']);
-  $minUsers = (int) htmlspecialchars($_POST['min-users']);
+  $minUsers = htmlspecialchars($_POST['min-users']);
   $eventType = htmlspecialchars($_POST['event-type']);
 
   if ($eventType == "one-time") {
@@ -17,7 +17,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
       $res->bindValue(':req_users', "");
-      $res->bindValue(':minimum_users', $minUsers);
+      $res->bindValue(':min_users', $minUsers);
       $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
       $newEventId = $db->lastInsertId();
@@ -36,12 +36,11 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res->bindValue(':name', $eventName);
       $res->bindValue(':description', $desc);
       $res->bindValue(':req_users', "");
-      $res->bindValue(':minimum_users', $minUsers);
+      $res->bindValue(':min_users', $minUsers);
       $res->bindValue(':user_id', $_SESSION['user_id']);
       $res->execute();
       $newEventId = $db->lastInsertId();
       if (isset($newEventId)) {
-        $_SESSION['debug'] = $newEventId;
         $newURL = 'event.php?rid='.$newEventId;
         header('Location: ' . $newURL);
         die();

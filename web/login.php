@@ -17,7 +17,6 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
       if (password_verify($password, $rsp['hash'])) {
         $_SESSION['user_id'] = $rsp['id'];
         $_SESSION['username'] = $username;
-        $_SESSION['debug'] = $rsp;
         $newURL = 'index.php';
         header('Location: ' . $newURL);
         die();
