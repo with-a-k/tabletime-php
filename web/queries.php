@@ -170,4 +170,45 @@ function createRecurringEvent() {
 
 }
 
+function getEventsByUser($userid) {
+  $db = connect_db();
+  $statement = $db->prepare(
+    "SELECT e.id, e.name, description, u.username
+    FROM onetimeevent AS e
+    INNER JOIN tabletime_user as u
+    ON e.user_id = u.id
+    WHERE e.id = ". $oid);
+  $statement->execute();
+
+  $eventList = [];
+
+  while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+    $oteId = $row['id'];
+    $oteName = $row['name'];
+    $oteDesc = $row['description'];
+    $oteHost = $row['username'];
+
+    $eventList[] = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost, 'type' => "One-time"];
+  }
+
+  $statement = $db->prepare(
+    "SELECT e.id, e.name, description, u.username
+    FROM recurevent AS e
+    INNER JOIN tabletime_user as u
+    ON e.user_id = u.id
+    WHERE e.id = ". $oid);
+  $statement->execute();
+
+  while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+    $oteId = $row['id'];
+    $oteName = $row['name'];
+    $oteDesc = $row['description'];
+    $oteHost = $row['username'];
+
+    $eventList[] = ['id' => $oteId, 'name' => $oteName, 'desc' => $oteDesc, 'creator' => $oteHost, 'type' => "Recurring"];
+  }
+
+  return $eventList;
+}
+
  ?>

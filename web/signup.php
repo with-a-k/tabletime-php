@@ -2,6 +2,13 @@
 session_start();
 require "connectDb.php";
 
+if(isset($_SESSION['username'])) {
+  $_SESSION['message'] = "Not available, as you are logged in.";
+  $newURL = 'index.php';
+  header('Location: ' . $newURL);
+  die();
+}
+
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
   $db = connect_db();
   $username = htmlspecialchars($_POST['username']);

@@ -2,6 +2,13 @@
 session_start();
 require "connectDb.php";
 
+if(!isset($_SESSION['username'])) {
+  $newURL = 'index.php';
+  $_SESSION['message'] = "Not available, as you are not logged in.";
+  header('Location: ' . $newURL);
+  die();
+}
+
 if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-users']) && isset($_POST['event-type'])) {
   $db = connect_db();
   $eventName = htmlspecialchars($_POST['event-name']);
