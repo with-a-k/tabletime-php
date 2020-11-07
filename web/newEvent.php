@@ -41,6 +41,7 @@ if(isset($_POST['event-name']) && isset($_POST['desc']) && isset($_POST['min-use
       $res->execute();
       $newEventId = $db->lastInsertId();
       if (isset($newEventId)) {
+        $_SESSION['debug'] = $newEventId;
         $newURL = 'event.php?rid='.$newEventId;
         header('Location: ' . $newURL);
         die();
