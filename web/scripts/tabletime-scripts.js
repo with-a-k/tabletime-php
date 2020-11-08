@@ -37,7 +37,6 @@ function bookAvailability(user_id, event_id, username) {
     method: "POST",
     data: dataObj,
     success: function( result ) {
-      console.log(date);
       let date_time_display = "PLACEHOLDER";
       if(date != undefined) {
         date_time = new Date(date + " " + time);
@@ -47,6 +46,7 @@ function bookAvailability(user_id, event_id, username) {
           (date_time.getHours()+1) + ":" +
           (date_time.getMinutes()+1) + ":" +
           (date_time.getSeconds()+1) + "+00";
+        console.log(date_time_display);
       }
       //Write the new booking into the page
       let availability_line =
