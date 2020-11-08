@@ -25,7 +25,7 @@ function bookAvailability(user_id, event_id, username) {
         event_type: event_type,
         user_id: user_id,
         event_id: event_id,
-        date_time: date_time,
+        date_time: date_time_insert,
         duration: duration
       }
       break;
