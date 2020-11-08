@@ -37,6 +37,8 @@ function bookAvailability(user_id, event_id, username) {
     method: "POST",
     data: dataObj,
     success: function( result ) {
+      console.log(date);
+      let date_time_display = "PLACEHOLDER";
       if(date != undefined) {
         date_time = new Date(date + " " + time);
         let date_time_display = date_time.getFullYear() + "-" +
