@@ -57,25 +57,23 @@ if (isset($_GET['oid'])) {
     <?php if(isset($_SESSION['username']) && isset($_SESSION['user_id'])): ?>
       <div class="add-avail-form">
         <h5>When are you available for this event?</h5>
-        <form name="add-availability">
-          <?php if(isset($_GET['oid'])): ?>
+        <?php if(isset($_GET['oid'])): ?>
             <label for="date">Date:</label> <input type="date" name="date" id="booking-form-date">
             <label for="time">Time:</label> <input type="time" name="time" id="booking-form-time">
           <?php elseif(isset($_GET['rid'])): ?>
             <label for="day_of_week">Day:</label> <select name="day_of_week" id="day_of_week">
-              <option value="Mondays">Mondays</option>
-              <option value="Tuesdays">Tuesdays</option>
-              <option value="Wednesdays">Wednesdays</option>
-              <option value="Thursdays">Thursdays</option>
-              <option value="Fridays">Fridays</option>
-              <option value="Saturdays">Saturdays</option>
-              <option value="Sundays">Sundays</option>
-            </select>
-            <label for="hour_of_day">Hour:</label> <input type="text" name="hour_of_day" id="hour_of_day">
-          <?php endif ?>
-          <label for="duration">Duration:</label> <input type="text" name="duration" id="booking-form-duration">
-          <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>, <?$_SESSION['username']?>)" id="ajax-submit-booking">Submit</button>
-        </form>
+            <option value="Mondays">Mondays</option>
+            <option value="Tuesdays">Tuesdays</option>
+            <option value="Wednesdays">Wednesdays</option>
+            <option value="Thursdays">Thursdays</option>
+            <option value="Fridays">Fridays</option>
+            <option value="Saturdays">Saturdays</option>
+            <option value="Sundays">Sundays</option>
+          </select>
+          <label for="hour_of_day">Hour:</label> <input type="text" name="hour_of_day" id="hour_of_day">
+        <?php endif ?>
+        <label for="duration">Duration:</label> <input type="text" name="duration" id="booking-form-duration">
+        <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>, <?$_SESSION['username']?>)" id="ajax-submit-booking">Submit</button>
       </div>
     <?php endif; ?>
   </body>
