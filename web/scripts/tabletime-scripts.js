@@ -18,12 +18,10 @@ function bookAvailability(user_id, event_id, username) {
       }
       break;
     case "one-time":
-      console.log(date);
-      console.log(time);
       date_time = new Date(date + " " + time);
-      date_time_insert.toISOString();
+      let date_time_insert = date_time.toISOString();
       //date_time_string = "YYYY-MM-DD HH:mm:ss+TZ"
-      date_time_display = date_time.getFullYear() + "-" +
+      let date_time_display = date_time.getFullYear() + "-" +
         (date_time.getMonth()+1) + "-" +
         (date_time.getDate()+1) + "- " +
         (date_time.getHours()+1) + ":" +
