@@ -1,7 +1,7 @@
 function bookAvailability(user_id, event_id, username) {
   let date = $('input#booking-form-date').val();
   let time = $('input#booking-form-time').val();
-  let dow = $('select#day_of_week:checked').val();
+  let dow = $('select#day_of_week').val();
   let hod = $('input#hour_of_day').val();
   let duration = $('input#booking-form-duration').val();
   let event_type = (date == undefined ? "recurring" : "one-time");
