@@ -154,20 +154,52 @@ function getRecurringEventBookingsByEvent($oid) {
   return $userAvails;
 }
 
-function addBookingToOneTimeEvent() {
+function addBookingToOneTimeEvent($user_id, $event_id, $start, $duration) {
+  $db = connect_db();
+  $user_id = htmlspecialchars($user_id);
+  $event_id = htmlspecialchars($event_id);
+  $start = htmlspecialchars($start);
+  $duration = htmlspecialchars($duration);
 
+  $query = 'INSERT INTO useronetime (user_id, onetimeevent_id, start_time, duration)
+  VALUES (:uid, :oteid, :start, :duration)';
+  try {
+    $res = $db->prepare($query);
+    $res->bindValue(':uid', $user_id);
+    $res->bindValue(':oteid', $event_id);
+    $res->bindValue(':start', $start);
+    $res->bindValue(':duration', $duration);
+    $res->execute();
+    $newEventId = $db->lastInsertId();
+  } catch (PDOException $e) {
+    echo $e;
+    die();
+  }
 }
 
-function addBookingToRecurringEvent() {
+function addBookingToRecurringEvent($user_id, $event_id, $day, $hour, $duration) {
+  $db = connect_db();
+  $user_id = htmlspecialchars($user_id);
+  $event_id = htmlspecialchars($event_id);
+  $day = htmlspecialchars($day);
+  $hour = htmlspecialchars($hour);
+  $duration = htmlspecialchars($duration);
 
-}
-
-function createOneTimeEvent() {
-
-}
-
-function createRecurringEvent() {
-
+  $query = 'INSERT INTO userrecur (user_id, recurevent_id, day_of_week, hour_of_day, duration)
+  VALUES (:uid, :recid, :day, :hour, :duration)';
+  try {
+    $res = $db->prepare($query);
+    $res->bindValue(':uid', $user_id);
+    $res->bindValue(':recid', $event_id);
+    $res->bindValue(':day', $day);
+    $res->bindValue(':hour', $hour);
+    $res->bindValue(':duration', $duration);
+    $res->execute();
+    $newEventId = $db->lastInsertId();
+  } catch (PDOException $e) {
+    echo $e;
+    die();
+  }
 }
 
 function getEventsByUser($userid) {
