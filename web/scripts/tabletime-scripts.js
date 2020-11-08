@@ -40,7 +40,7 @@ function bookAvailability(user_id, event_id, username) {
       let date_time_display = "PLACEHOLDER";
       if(date != undefined) {
         date_time = new Date(date + " " + time);
-        let date_time_display = date_time.getFullYear() + "-" +
+        date_time_display = date_time.getFullYear() + "-" +
           (date_time.getMonth()+1) + "-" +
           (date_time.getDate()+1) + " " +
           (date_time.getHours()+1) + ":" +
