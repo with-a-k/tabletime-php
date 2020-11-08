@@ -43,7 +43,7 @@ if (isset($_GET['oid'])) {
       <h3>Potential Attendees:</h3>
       <ul class="attendees">
         <?php foreach($avails as $avail): ?>
-          <li id="booking-<?=$avail['id']?>">
+          <li class="booking">
             <h5><?=$avail['booker']?></h5>
             <?php if(isset($_GET['oid'])): ?>
               <p>Available at <?=$avail['start_time']?> for <?=$avail['duration']?></p>
@@ -74,7 +74,7 @@ if (isset($_GET['oid'])) {
             <label for="hour_of_day">Hour:</label> <input type="text" name="hour_of_day" id="hour_of_day">
           <?php endif ?>
           <label for="duration">Duration:</label> <input type="text" name="duration" id="booking-form-duration">
-          <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>)" id="ajax-submit-booking">Submit</button>
+          <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>, <?$_SESSION['username']?>)" id="ajax-submit-booking">Submit</button>
         </form>
       </div>
     <?php endif; ?>

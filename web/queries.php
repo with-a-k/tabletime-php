@@ -170,7 +170,6 @@ function addBookingToOneTimeEvent($user_id, $event_id, $start, $duration) {
     $res->bindValue(':start', $start);
     $res->bindValue(':duration', $duration);
     $res->execute();
-    $newEventId = $db->lastInsertId();
   } catch (PDOException $e) {
     echo $e;
     die();
@@ -195,7 +194,6 @@ function addBookingToRecurringEvent($user_id, $event_id, $day, $hour, $duration)
     $res->bindValue(':hour', $hour);
     $res->bindValue(':duration', $duration);
     $res->execute();
-    $newEventId = $db->lastInsertId();
   } catch (PDOException $e) {
     echo $e;
     die();
