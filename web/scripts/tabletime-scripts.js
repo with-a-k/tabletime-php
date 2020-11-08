@@ -37,7 +37,7 @@ function bookAvailability(user_id, event_id, username) {
     success: function( result ) {
       //Write the new booking into the page
       let availability_line =
-        (date == undefined ? "<p>Available on " + dow + " at " + hod + " for " + duration + "</p>"" :
+        (date == undefined ? "<p>Available on " + dow + " at " + hod + " for " + duration + "</p>" :
         "<p>Available at " + date_time + " for " + duration + "</p>");
       let newBooking = '<li class="booking"><h5>' + username + '</h5>' + availability_line + '</li>';
       $('ul.attendees').append(newBooking);
