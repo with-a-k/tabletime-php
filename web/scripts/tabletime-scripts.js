@@ -12,8 +12,8 @@ function bookAvailability(user_id, event_id, username) {
         event_type: event_type,
         user_id: user_id,
         event_id: event_id,
-        day_of_week: day_of_week,
-        hour_of_day: hour_of_day,
+        day_of_week: dow,
+        hour_of_day: hod,
         duration: duration
       }
       break;
@@ -32,7 +32,6 @@ function bookAvailability(user_id, event_id, username) {
     default:
       return;
   }
-  console.log(dataObj);
   $.ajax({
     url: "/book.php",
     method: "POST",
