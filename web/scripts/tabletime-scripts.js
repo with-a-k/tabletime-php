@@ -32,6 +32,7 @@ function bookAvailability(user_id, event_id, username) {
     default:
       return;
   }
+  console.log(dataObj);
   $.ajax({
     url: "/book.php",
     method: "POST",
