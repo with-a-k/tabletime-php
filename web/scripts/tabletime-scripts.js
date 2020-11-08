@@ -20,14 +20,15 @@ function bookAvailability(user_id, event_id, username) {
     case "one-time":
       console.log(date);
       console.log(time);
-      date_time = new Date(date + " " + time).toISOString();
+      date_time = new Date(date + " " + time);
+      date_time_insert.toISOString();
       //date_time_string = "YYYY-MM-DD HH:mm:ss+TZ"
-      date_time_string = (Date.getFullYear()).toString() + "-" +
-        (Date.getMonth()+1).toString() + "-" +
-        (Date.getDate()+1).toString() + "- " +
-        (Date.getHours()+1).toString() + ":" +
-        (Date.getMinutes()+1).toString() + ":" +
-        (Date.getSeconds()+1).toString() + "+00";
+      date_time_display = (date_time.getFullYear()).toString() + "-" +
+        (date_time.getMonth()+1).toString() + "-" +
+        (date_time.getDate()+1).toString() + "- " +
+        (date_time.getHours()+1).toString() + ":" +
+        (date_time.getMinutes()+1).toString() + ":" +
+        (date_time.getSeconds()+1).toString() + "+00");
       dataObj = {
         event_type: event_type,
         user_id: user_id,
@@ -47,7 +48,7 @@ function bookAvailability(user_id, event_id, username) {
       //Write the new booking into the page
       let availability_line =
         (date == undefined ? "<p>Available on " + dow + " at " + hod + " for " + duration + "</p>" :
-        "<p>Available at " + date_time + " for " + duration + "</p>");
+        "<p>Available at " + date_time_display + " for " + duration + "</p>");
       let newBooking = '<li class="booking"><h5>' + username + '</h5>' + availability_line + '</li>';
       $('ul.attendees').append(newBooking);
       alert('Successfully added.');
