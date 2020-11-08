@@ -20,13 +20,7 @@ function bookAvailability(user_id, event_id, username) {
     case "one-time":
       date_time = new Date(date + " " + time);
       let date_time_insert = date_time.toISOString();
-      //date_time_string = "YYYY-MM-DD HH:mm:ss+TZ"
-      let date_time_display = date_time.getFullYear() + "-" +
-        (date_time.getMonth()+1) + "-" +
-        (date_time.getDate()+1) + "- " +
-        (date_time.getHours()+1) + ":" +
-        (date_time.getMinutes()+1) + ":" +
-        (date_time.getSeconds()+1) + "+00";
+
       dataObj = {
         event_type: event_type,
         user_id: user_id,
@@ -43,6 +37,15 @@ function bookAvailability(user_id, event_id, username) {
     method: "POST",
     data: dataObj,
     success: function( result ) {
+      if(date != undefined) {
+        date_time = new Date(date + " " + time);
+        let date_time_display = date_time.getFullYear() + "-" +
+          (date_time.getMonth()+1) + "-" +
+          (date_time.getDate()+1) + "- " +
+          (date_time.getHours()+1) + ":" +
+          (date_time.getMinutes()+1) + ":" +
+          (date_time.getSeconds()+1) + "+00";
+      }
       //Write the new booking into the page
       let availability_line =
         (date == undefined ? "<p>Available on " + dow + " at " + hod + " for " + duration + "</p>" :
