@@ -40,12 +40,12 @@ function bookAvailability(user_id, event_id, username) {
       let date_time_display = "PLACEHOLDER";
       if(date != undefined) {
         date_time = new Date(date + " " + time);
-        date_time_display = date_time.getFullYear() + "-" +
-          (date_time.getMonth()+1).padStart(2, '0') + "-" +
-          (date_time.getDate()).padStart(2, '0') + " " +
-          (date_time.getHours()).padStart(2, '0') + ":" +
-          (date_time.getMinutes()).padStart(2, '0') + ":" +
-          (date_time.getSeconds()).padStart(2, '0') + "+00";
+        date_time_display = date_time.getFullYear().toString() + "-" +
+          (date_time.getMonth()+1).toString().padStart(2, '0') + "-" +
+          (date_time.getDate()).toString().padStart(2, '0') + " " +
+          (date_time.getHours()).toString().padStart(2, '0') + ":" +
+          (date_time.getMinutes()).toString().padStart(2, '0') + ":" +
+          (date_time.getSeconds()).toString().padStart(2, '0') + "+00";
       }
       //Write the new booking into the page
       let availability_line =
