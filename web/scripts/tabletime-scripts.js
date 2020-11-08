@@ -23,12 +23,12 @@ function bookAvailability(user_id, event_id, username) {
       date_time = new Date(date + " " + time);
       date_time_insert.toISOString();
       //date_time_string = "YYYY-MM-DD HH:mm:ss+TZ"
-      date_time_display = (date_time.getFullYear()).toString() + "-" +
-        (date_time.getMonth()+1).toString() + "-" +
-        (date_time.getDate()+1).toString() + "- " +
-        (date_time.getHours()+1).toString() + ":" +
-        (date_time.getMinutes()+1).toString() + ":" +
-        (date_time.getSeconds()+1).toString() + "+00");
+      date_time_display = date_time.getFullYear() + "-" +
+        (date_time.getMonth()+1) + "-" +
+        (date_time.getDate()+1) + "- " +
+        (date_time.getHours()+1) + ":" +
+        (date_time.getMinutes()+1) + ":" +
+        (date_time.getSeconds()+1) + "+00";
       dataObj = {
         event_type: event_type,
         user_id: user_id,
