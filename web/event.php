@@ -73,7 +73,7 @@ if (isset($_GET['oid'])) {
           <label for="hour_of_day">Hour:</label> <input type="text" name="hour_of_day" id="hour_of_day">
         <?php endif ?>
         <label for="duration">Duration:</label> <input type="text" name="duration" id="booking-form-duration">
-        <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>, <?$_SESSION['username']?>)" id="ajax-submit-booking">Submit</button>
+        <button class="button" onclick="bookAvailability(<?=$_SESSION['user_id']?>, <?php echo isset($_GET['oid']) ? $_GET['oid'] : $_GET['rid']?>, <?=$_SESSION['username']?>)" id="ajax-submit-booking">Submit</button>
       </div>
     <?php endif; ?>
   </body>

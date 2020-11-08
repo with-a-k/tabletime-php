@@ -3,7 +3,7 @@ function bookAvailability(user_id, event_id, username) {
   let time = $('input#booking-form-time').val();
   let dow = $('input#day_of_week').val();
   let hod = $('input#hour_of_day').val();
-  let duration = $('input#duration').val();
+  let duration = $('input#booking-form-duration').val();
   let event_type = (date == undefined ? "recurring" : "one-time");
   let dataObj;
   switch (event_type) {
@@ -21,6 +21,13 @@ function bookAvailability(user_id, event_id, username) {
       console.log(date);
       console.log(time);
       date_time = new Date(date + " " + time).toISOString();
+      //date_time_string = "YYYY-MM-DD HH:mm:ss+TZ"
+      date_time_string = (Date.getFullYear()).toString() + "-" +
+        (Date.getMonth()+1).toString() + "-" +
+        (Date.getDate()+1).toString() + "- " +
+        (Date.getHours()+1).toString() + ":" +
+        (Date.getMinutes()+1).toString() + ":" +
+        (Date.getSeconds()+1).toString() + "+00";
       dataObj = {
         event_type: event_type,
         user_id: user_id,
