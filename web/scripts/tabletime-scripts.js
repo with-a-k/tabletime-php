@@ -1,4 +1,4 @@
-function bookAvailiability(user_id, event_id, username) {
+function bookAvailability(user_id, event_id, username) {
   let date = $('input#booking-form-date').val();
   let time = $('input#booking-form-time').val();
   let dow = $('input#day_of_week').val();
