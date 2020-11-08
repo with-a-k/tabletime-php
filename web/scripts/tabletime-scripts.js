@@ -18,7 +18,9 @@ function bookAvailability(user_id, event_id, username) {
       }
       break;
     case "one-time":
-      date_time = new Date(date + time).toISOString();
+      console.log(date);
+      console.log(time);
+      date_time = new Date(date + " " + time).toISOString();
       dataObj = {
         event_type: event_type,
         user_id: user_id,
